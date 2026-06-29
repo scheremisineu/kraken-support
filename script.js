@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setLang(saved);
     renderCampaign();
     renderBanks();
+    loadProgress();
 });
 
 function deepLink(e, appUrl, webUrl) {
@@ -108,4 +109,43 @@ function renderBanks() {
     localGrid.innerHTML = enabled.filter(b => !b.international).map(renderCard).join('');
 
     applyLang(lang);
+}
+
+function formatMoney(n) {
+    return n.toLocaleString('uk-UA') + ' ₴';
+}
+
+function loadProgress() {
+    fetch('data/collected.json?_=' + Date.now())
+      .then(r => r.json())
+      .then(data => renderProgress(data.collected))
+      .catch(() => {
+          const overlay = document.getElementById('progress-overlay');
+          if (overlay) overlay.style.display = 'none';
+      });
+}
+
+function renderProgress(collected) {
+    const goalRaw = CAMPAIGN.goal.replace(/\s/g, '');
+    const goal = parseInt(goalRaw, 10);
+    if (!goal || isNaN(collected)) return;
+
+    const pct = Math.min(100, Math.round((collected / goal) * 100));
+    const left = Math.max(0, goal - collected);
+
+    document.getElementById('progress-collected').textContent = formatMoney(collected);
+    document.getElementById('progress-percent').textContent = pct + '%';
+    document.getElementById('progress-goal-label').textContent = 'з ' + formatMoney(goal);
+
+    const lang = localStorage.getItem('lang') || 'uk';
+    const leftEl = document.getElementById('progress-left');
+    if (left > 0) {
+        leftEl.textContent = i18n[lang]['system.left'] + ' ' + formatMoney(left);
+    } else {
+        leftEl.textContent = i18n[lang]['system.done'];
+        leftEl.style.color = '#4ade80';
+    }
+
+    const fill = document.getElementById('progress-fill');
+    fill.style.width = pct + '%';
 }

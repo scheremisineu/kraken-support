@@ -40,7 +40,22 @@
             <span class="status-dot"></span>
             <span data-i18n="campaign.status"></span>
           </div>
-          <img id="campaign-image" src="icons/kraken-sup.png" alt="Kraken" class="campaign-image" />
+          <div class="campaign-image-wrap">
+            <img id="campaign-image" src="icons/kraken-sup.png" alt="Kraken" class="campaign-image" />
+            <div class="progress-overlay" id="progress-overlay">
+              <div class="progress-labels">
+                <span class="progress-collected" id="progress-collected">—</span>
+                <span class="progress-left" id="progress-left"></span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <div class="progress-meta">
+                <span id="progress-percent">0%</span>
+                <span id="progress-goal-label"></span>
+              </div>
+            </div>
+          </div>
           <h2 class="campaign-title" id="campaign-title"></h2>
           <p class="campaign-desc" id="campaign-desc"></p>
           <div class="campaign-meta">

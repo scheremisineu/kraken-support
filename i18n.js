@@ -13,7 +13,10 @@ const i18n = {
     'system.copy':           'Копіювати',
     'system.copied':         'Скопійовано',
     'system.donate':         'Задонатити',
-    'system.warning':        'Для PayPal, Wise, Revolut — <strong>не вказуй військову мету</strong> в коментарях. Пиши: «Help for Ukraine», «For a friend», «Gift».'
+    'system.warning':        'Для PayPal, Wise, Revolut — <strong>не вказуй військову мету</strong> в коментарях. Пиши: «Help for Ukraine», «For a friend», «Gift».',
+    'system.left':           'Залишилось',
+    'system.done':           '✓ Ціль досягнута!',
+
   },
   en: {
     'nav.brand':             'Kraken · Support',
@@ -29,6 +32,8 @@ const i18n = {
     'system.copy':           'Copy',
     'system.copied':         'Copied',
     'system.donate':         'Donate',
-    'system.warning':        'For PayPal, Wise, Revolut — <strong>do not mention military purposes</strong> in comments. Write: «Help for Ukraine», «For a friend», «Gift».'
+    'system.warning':        'For PayPal, Wise, Revolut — <strong>do not mention military purposes</strong> in comments. Write: «Help for Ukraine», «For a friend», «Gift».',
+    'system.left':           'Left',
+    'system.done':           '✓ Done!',
   }
 }
